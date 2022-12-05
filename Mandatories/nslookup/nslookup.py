@@ -7,8 +7,13 @@ input = input("Enter the domain name: ")
 
 approved_domains = (".dk", ".com", ".org")
 approved_www = ("www.")
+blacklist_symbols = [";", "&", "<", ">", "'"] 
 
-
+#Checks for the symbols if they appear terminate
+for symbols in blacklist_symbols:
+        if symbols in input:
+            print("Symbols not allowed")
+            quit()
 
 if input.endswith(approved_domains) & input.startswith(approved_www):
     command = "nslookup {}".format(input)
